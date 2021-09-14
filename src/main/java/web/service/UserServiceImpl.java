@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(true);
-        user.addRole(roleRepository.findRoleByName("USER"));
+        user.addRole(roleRepository.findRoleByName("USER"));  // заглушка
         userRepository.save(user);
     }
     
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         user.setPassword(userRepository.getById(user.getId()).getPassword());
         user.setEnabled(true);
-        user.addRole(roleRepository.findRoleByName("USER"));
+        user.addRole(roleRepository.findRoleByName("USER"));  // заглушка
         userRepository.save(user);
     }
     
