@@ -1,6 +1,5 @@
 package web.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import web.models.Role;
 import web.models.User;
@@ -30,7 +29,6 @@ public class DBinit {
         user1.setName("Tom");
         user1.setSurname("Jones");
         user1.setEmail("tom@gmail.com");
-        user1.setEnabled(true);
         
         User user2 = new User();
         user2.setLogin("анна");
@@ -38,7 +36,6 @@ public class DBinit {
         user2.setName("Ann");
         user2.setSurname("Smith");
         user2.setEmail("ann@hotmail.com");
-        user2.setEnabled(true);
         
         User user3 = new User();
         user3.setLogin("sam");
@@ -46,12 +43,9 @@ public class DBinit {
         user3.setName("Sam");
         user3.setSurname("Black");
         user3.setEmail("sam@yahoo.com");
-        user3.setEnabled(true);
     
         user1.addRole(roleService.getRoleByName("ADMIN"));
-        user2.addRole(roleService.getRoleByName("USER"));
         user3.addRole(roleService.getRoleByName("ADMIN"));
-        user3.addRole(roleService.getRoleByName("USER"));
         userService.saveUser(user1);
         userService.saveUser(user2);
         userService.saveUser(user3);

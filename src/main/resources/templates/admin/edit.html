@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>User Edit Page</title>
-    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -17,8 +17,8 @@
         <label for="login">Login</label>
         <input class="input" id="login" type="text" th:field="*{login}" required>
         <br>
-        <label for="password">Password</label>
-        <input class="input" id="password" type="text" th:field="*{password}" required>
+        <label for="password">New password</label>
+        <input class="input" id="password" type="password" th:field="*{password}">
         <br>
         <label for="name">Name</label>
         <input class="input" id="name" type="text" th:field="*{name}" required>
@@ -34,7 +34,7 @@
         <select multiple size="3">
             <option disabled selected>Select role:</option>
             <div th:each="role : ${roles}">
-                <option th:text="${role.getRole()}"
+                <option th:text="${role.getName()}"
                         th:value="${role.getId()}"></option>
             </div>
         </select>

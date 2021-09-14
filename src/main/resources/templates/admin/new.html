@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>User Creation Page</title>
-    <link rel="stylesheet" th:href="@{/static/css/main.css}">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -33,7 +33,7 @@
         <select multiple size="3">
             <option disabled selected>Select role:</option>
             <div th:each="role : ${roles}">
-                <option th:text="${role.getRole()}"
+                <option th:text="${role.getName()}"
                         th:value="${role.getId()}"></option>
             </div>
         </select>

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
     
     private UserRepository userRepository;
     private RoleRepository roleRepository;
-    // private final PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -23,6 +23,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setRoleRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
+    }
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
     }
     
     @Override
@@ -42,17 +46,17 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public void saveUser(User user) {
-        // user.setPassword(passwordEncoder.encode(user.getPassword()));
-        // user.setEnabled(true);
-        // user.addRole(roleRepository.findRoleByName("USER"));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(true);
+        user.addRole(roleRepository.findRoleByName("USER"));
         userRepository.save(user);
     }
     
     @Override
     public void updateUser(User user) {
-        // if (!user.getPassword().startsWith("$2a$")) {
-        //     user.setPassword(passwordEncoder.encode(user.getPassword()));
-        // }
+        user.setPassword(userRepository.getById(user.getId()).getPassword());
+        user.setEnabled(true);
+        user.addRole(roleRepository.findRoleByName("USER"));
         userRepository.save(user);
     }
     

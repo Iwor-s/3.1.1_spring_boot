@@ -4,11 +4,9 @@ import org.springframework.stereotype.Service;
 import web.models.Role;
 import web.repository.RoleRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-// @Transactional
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
     
