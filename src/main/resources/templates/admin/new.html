@@ -31,18 +31,12 @@
         <br>
         <br>
         <label for="roles">User roles (multiple select):</label>
-        <select id="roles" th:field="*{roles}" multiple size="2">
+        <select id="roles" th:field="*{roles}" multiple size="${allRoles.size()}">
             <option th:each="role : ${allRoles}"
                     th:value="${role.getId()}"
                     th:text="${role.getName()}">
                 RoleName
             </option>
-<!--        <select th:name="role-select" multiple size="3">-->
-<!--            <option disabled selected>Select role:</option>-->
-<!--            <div th:each="role : ${roles}">-->
-<!--                <option th:text="${role.getName()}"-->
-<!--                        th:value="${role.getId()}"></option>-->
-<!--            </div>-->
         </select>
         <br><br>
         <input class="btn" type="submit" value="Add User">

@@ -12,7 +12,7 @@
       th:action="@{/admin/users/{id}(id=${id})}"
       th:object="${user}">
     <fieldset>
-        <legend th:text="'Editing ID ' + ${id}"></legend>
+        <legend th:text="'User #' + ${id} + ' editing'"></legend>
         <input type="hidden" th:field="*{id}" />
         
         <label for="login">Login</label>

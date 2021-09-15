@@ -10,7 +10,7 @@
 
 <form>
     <fieldset>
-        <legend>User Info</legend>
+        <legend th:text="'User #' + ${id} + ' info'"></legend>
         
         <p>login:</p>
         <h3 th:text="${user.getLogin()}"></h3>
