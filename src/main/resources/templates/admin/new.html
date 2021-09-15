@@ -31,7 +31,7 @@
         <br>
         <br>
         <label for="roles">User roles (multiple select):</label>
-        <select id="roles" th:field="*{roles}" multiple size="${allRoles.size()}">
+        <select id="roles" th:field="*{roles}" multiple th:size="${allRoles.size()}">
             <option th:each="role : ${allRoles}"
                     th:value="${role.getId()}"
                     th:text="${role.getName()}">
