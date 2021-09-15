@@ -1,5 +1,6 @@
 package web.config;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import web.models.Role;
 import web.models.User;
@@ -8,15 +9,11 @@ import web.service.UserService;
 
 import javax.annotation.PostConstruct;
 
+@AllArgsConstructor
 @Component
 public class DBinit {
     private final RoleService roleService;
     private final UserService userService;
-    
-    public DBinit(RoleService roleService, UserService userService) {
-        this.roleService = roleService;
-        this.userService = userService;
-    }
     
     @PostConstruct
     public void createData() {
