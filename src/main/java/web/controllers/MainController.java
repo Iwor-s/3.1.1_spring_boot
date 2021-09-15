@@ -1,5 +1,6 @@
 package web.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,12 +9,14 @@ import web.models.User;
 
 import java.security.Principal;
 
+@AllArgsConstructor
 @Controller
 public class MainController {
     UserDetailsService userDetailsService;
     
-    public MainController(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    @GetMapping("login")
+    public String loginPage() {
+        return "login";
     }
     
     @GetMapping("admin")
@@ -26,10 +29,5 @@ public class MainController {
         User user = (User) userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("user", user);
         return "user";
-    }
-    
-    @GetMapping("login")
-    public String loginPage() {
-        return "login";
     }
 }

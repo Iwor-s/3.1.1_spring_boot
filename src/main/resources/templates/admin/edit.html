@@ -9,10 +9,11 @@
 <body>
 
 <form th:method="PATCH"
-      th:action="@{/admin/users/{id}(id=${user.getId()})}"
+      th:action="@{/admin/users/{id}(id=${id})}"
       th:object="${user}">
     <fieldset>
         <legend th:text="'Editing ID ' + ${id}"></legend>
+        <input type="hidden" th:field="*{id}" />
         
         <label for="login">Login</label>
         <input class="input" id="login" type="text" th:field="*{login}" required>
@@ -29,14 +30,12 @@
         <label for="email">Email</label>
         <input class="input" id="email" type="text" th:field="*{email}" required>
         <br>
-        <p>Roles: <span th:text="${user.getRoles()}"></span></p>
-        <br>
-        <select multiple size="3">
-            <option disabled selected>Select role:</option>
-            <div th:each="role : ${roles}">
-                <option th:text="${role.getName()}"
-                        th:value="${role.getId()}"></option>
-            </div>
+        <label for="roles">User roles (multiple select):</label>
+        <select id="roles" th:field="*{roles}" multiple th:size="${allRoles.size()}">
+            <option th:each="role : ${allRoles}"
+                    th:value="${role.getId()}"
+                    th:text="${role.getName()}">
+            </option>
         </select>
         <br><br>
         <input class="btn" type="submit" value="Update User">
